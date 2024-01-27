@@ -18,6 +18,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	velocity = Vector2.ZERO
+	look_at(get_global_mouse_position())
+	rotation_degrees+=90
 	if Input.is_action_pressed("left"):
 		velocity.x += -1
 	if Input.is_action_pressed("right"):
@@ -30,6 +32,4 @@ func _process(delta):
 	if velocity != Vector2.ZERO:
 		direction = velocity
 	
-	rotation = direction.angle()
-		
 	position += velocity.normalized() * speed * delta
