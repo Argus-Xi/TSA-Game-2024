@@ -9,7 +9,7 @@
 [node name="TileMap" parent="." instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 146, 377 )
+position = Vector2( 141, 345 )
 speed = 20
 
 [node name="Camera_node" type="Node2D" parent="."]

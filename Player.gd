@@ -7,13 +7,19 @@ var omega = PI
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
 
-# var b = "text"
+# player attributes
+var total_lives
+var health
+var damage
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	speed = speed * 1000
-	print(typeof(get_viewport().get_mouse_position())) # Replace with function body.
+	
+	#accessing global variables
+	
+	# print(typeof(get_viewport().get_mouse_position())) # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
