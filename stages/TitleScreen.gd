@@ -13,7 +13,7 @@ export var next_dialogue = "Starting New Stage"
 onready var stage_switch_signal = $Stage_switch_signal
 
 func _ready():
-	stage_switch_signal.connect("scene_change", self, "scene_change_2_func")
+	pass
 	
 
 func _process(_delta):
@@ -26,5 +26,19 @@ func scene_change_2_func():
 
 #  Functions to send level events up to SceneSwitcher
 
+func solved():   # Calculates the score and sends it to the SceneSwitcher for the UI
+	pass
+	
 func died():
 	emit_signal("player_died")
+
+
+func _on_ContinueGame_button_down():
+	if Global.current_saved_stage > 0:
+		emit_signal("scene_change_2", false, Global.current_saved_stage)
+	else:
+		emit_signal("scene_change_2", true, 1)
+
+
+func _on_NewGame_button_down():
+	scene_change_2_func()

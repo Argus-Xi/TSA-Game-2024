@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://stages/Stage.gd" type="Script" id=1]
+[ext_resource path="res://stages/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/logic/Stage_switch_signal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/fonts/small_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/fonts/Large_Font.tres" type="DynamicFont" id=4]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="Theme" id=2]
 
 [node name="stageroot" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,11 +16,32 @@ script = ExtResource( 1 )
 position = Vector2( 139, 195 )
 speed = 20
 
-[node name="Stage_switch_signal" parent="." instance=ExtResource( 3 )]
-position = Vector2( 972, 290 )
+[node name="Title" type="Label" parent="."]
+margin_left = 380.0
+margin_top = 100.0
+margin_right = 644.0
+margin_bottom = 168.0
+theme = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "TitleScreen"
 
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-rect_scale = Vector2( 9.73833, 8.28807 )
-text = "0"
+[node name="ContinueGame" type="Button" parent="."]
+margin_left = 424.0
+margin_top = 242.0
+margin_right = 600.0
+margin_bottom = 278.0
+theme = SubResource( 2 )
+custom_fonts/font = ExtResource( 3 )
+text = "Continue Game"
+
+[node name="NewGame" type="Button" parent="."]
+margin_left = 424.0
+margin_top = 296.0
+margin_right = 600.0
+margin_bottom = 332.0
+theme = SubResource( 2 )
+custom_fonts/font = ExtResource( 3 )
+text = "New Game"
+
+[connection signal="button_down" from="ContinueGame" to="." method="_on_ContinueGame_button_down"]
+[connection signal="button_down" from="NewGame" to="." method="_on_NewGame_button_down"]

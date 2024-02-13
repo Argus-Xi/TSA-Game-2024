@@ -8,20 +8,67 @@ onready var menu_screen = $Menu  # menu screen UI reference
 
 onready var die_screen = $Die_screen
 
+#Cutscene elements
+
 onready var cutscene_dialogue = $Cutscene_Dialogue
 
+onready var cutscene_title = $Cutscene_Dialogue/Title
+
+onready var cutscene_content = $Cutscene_Dialogue/Content
+
+onready var cutscene_timer = $Cutscene_Dialogue/Timer
+
+
+var scene_change_dialogues = [
+	{
+		"title": "Forest Island",
+		"content": "Home sweet home"
+	},
+	{
+		"title": "Beach Island",
+		"content": "The hot home of the Yellow Key"
+	},
+	{
+		"title": "Rocky Island",
+		"content": "Home of the Rocks"
+	},
+	{
+		"title": "Ice Island",
+		"content": "Home of the Rocks"
+	},
+	{
+		"title": "Rocky Island",
+		"content": "Home of the Rocks"
+	},
+	{
+		"title": "Forest Island",
+		"content": "Home Sweet home: but desolated"
+	},
+	{
+		"title": "The Castle",
+		"content": "Say your prayers"
+	},
+]
+
+
+# Local variable to store which stage the player is in, not necessarily where they have their current slot saved
 var stage_count = 0
 
 func _ready() -> void:
 	current_Stage.connect("scene_change_2", self, "handle_next_level")
 	current_Stage.connect("player_died", self, "handle_player_death")
 
+# checks if the menu button is pressed
+func _process(_delta):
+	if Input.is_action_just_pressed("escape"):
+		menu_screen.visible = !menu_screen.visible
+
 # handles the second incoming signal from the stage in the chain, changes current stage
 func handle_next_level(save, destination_stage_count):#new_stage_count, next_dialogue):
 #	solve_screen.visible = false   # After a level is solved and "next" button is pressed, the solve screen should disappear
 #	die_screen.visible = false    # Same as solve screen above
 #	end_screen.visible = false
-	var local_des_stage = destination_stage_count # so we can change it if it's too high
+	stage_count = destination_stage_count # so we can change it if it's too high
 	print("scene_change_2 received")
 
 #	print("The new stage count received by the SceneSwitcher is: " + new_stage_count)
@@ -29,14 +76,32 @@ func handle_next_level(save, destination_stage_count):#new_stage_count, next_dia
 #
 
 	var next_Stage
-	if local_des_stage > Global.max_stages:  # checks whether or not it's the last level, cycles back to title screen if it is
-		local_des_stage = 0
-	next_Stage = load("res://stages/Stage" + str(local_des_stage) + ".tscn").instance()
+	
+		
+	# handles the cutscene
+	print(stage_count)
+	if stage_count > 0: # checks if it should play a cutscene dialogue in between
+		print("cutscene dialogue should be showing")
+		cutscene_title.text = scene_change_dialogues[stage_count - 1]["title"]
+		cutscene_content.text = scene_change_dialogues[stage_count - 1]["content"]
+		cutscene_dialogue.visible = true
+		cutscene_timer.start(3)
+		
+		
+	if stage_count > Global.max_stages:  # checks whether or not it's the last level, cycles back to title screen if it is, comes AFTER cutscene for final cutscene
+		stage_count = 0
+	
+	# instantiates the new scene, adds it under the stage container, connects to its signals, and deletes the old scene
+	next_Stage = load("res://stages/Stage" + str(stage_count) + ".tscn").instance()
 	StageContainer.add_child(next_Stage)
 	next_Stage.connect("scene_change_2", self, "handle_next_level")
 	next_Stage.connect("player_died", self, "handle_player_death")
 	current_Stage.queue_free()
 	current_Stage = next_Stage
+	
+	# Saves the new stage in Global if the "save" parameter sent up is true - not all scene changes are saved, such as back to title and whatnot
+	if save:
+		Global.current_saved_stage = stage_count
 
 	
 #  Handles when one of the players die, signal from the level, asks to retry
@@ -49,22 +114,12 @@ func _on_MenuButton_pressed():
 	
 	
 
-#  FUNCTIONS FOR ALL BUTTONS IN SOLVE SCREEN
 
-#  FUNCTIONS FOR ALL BUTTONS IN THE DIE SCREEN
+func _on_BacktoMain_button_down():
+	handle_next_level(false, 0)
+	menu_screen.visible = false
 
-#func _on_RetryButton_pressed():
-#	handle_next_level(current_Stage.local_stage_count - 1, "try again") # Retry button essentially moves to the next level, but pretends it was on the level before
-#
-##  FUNCTIONS FOR ALL BUTTONS IN END SCREEN
-#
-#
-##  FUNCTIONS FOR ALL BUTTONS IN MENU SCREEN
-#
-#func _on_TitleButton_pressed():
-#	handle_next_level(0, "back to main menu")
-#	menu_screen.visible = false
-#
-#func _on_ReloadButton_pressed():
-#	handle_next_level(current_Stage.local_stage_count - 1, "reloading") # Reload button essentially moves to the next level, but pretends it was on the level before
-#	menu_screen.visible = false
+
+# times out when the cutscene is done playing - may be temporary
+func _on_Timer_timeout():
+	cutscene_dialogue.visible = false
