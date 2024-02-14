@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/scripts/camera_follow.gd" type="Script" id=2]
 [ext_resource path="res://Assets/tilemaps/testmap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/enemies/enemy_basic.tscn" type="PackedScene" id=4]
 
 [node name="testscene" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 141, 345 )
-speed = 20
+position = Vector2( 140, 345 )
 
 [node name="Camera_node" type="Node2D" parent="."]
 script = ExtResource( 2 )
@@ -19,3 +19,6 @@ player_nodepath = NodePath("../Player")
 [node name="Camera2D" type="Camera2D" parent="Camera_node"]
 anchor_mode = 0
 current = true
+
+[node name="enemy_basic" parent="." instance=ExtResource( 4 )]
+position = Vector2( 440, 138 )

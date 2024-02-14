@@ -66,10 +66,9 @@ func _process(_delta):
 # handles the second incoming signal from the stage in the chain, changes current stage
 func handle_next_level(save, destination_stage_count):#new_stage_count, next_dialogue):
 #	solve_screen.visible = false   # After a level is solved and "next" button is pressed, the solve screen should disappear
-#	die_screen.visible = false    # Same as solve screen above
-#	end_screen.visible = false
+	die_screen.visible = false    # Same as solve screen above
+	menu_screen.visible = false
 	stage_count = destination_stage_count # so we can change it if it's too high
-	print("scene_change_2 received")
 
 #	print("The new stage count received by the SceneSwitcher is: " + new_stage_count)
 #	print(next_dialogue)
@@ -79,9 +78,7 @@ func handle_next_level(save, destination_stage_count):#new_stage_count, next_dia
 	
 		
 	# handles the cutscene
-	print(stage_count)
 	if stage_count > 0: # checks if it should play a cutscene dialogue in between
-		print("cutscene dialogue should be showing")
 		cutscene_title.text = scene_change_dialogues[stage_count - 1]["title"]
 		cutscene_content.text = scene_change_dialogues[stage_count - 1]["content"]
 		cutscene_dialogue.visible = true
@@ -123,3 +120,9 @@ func _on_BacktoMain_button_down():
 # times out when the cutscene is done playing - may be temporary
 func _on_Timer_timeout():
 	cutscene_dialogue.visible = false
+	
+# Retrying after dying
+func _on_Retry_button_down():
+	Global.player_health = Global.player_total_lives
+	handle_next_level(false, Global.current_saved_stage)
+	

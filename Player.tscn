@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/images/circle.png" type="Texture" id=2]
@@ -6,9 +6,12 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.0
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 35.0571
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
-speed = 300
+speed = 20
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.126618, 0.0683933 )
@@ -25,3 +28,18 @@ margin_top = -8.0
 margin_right = 32.0
 margin_bottom = 8.0
 color = Color( 0.701961, 0.0392157, 0.0392157, 1 )
+
+[node name="arrow_hit_box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arrow_hit_box"]
+shape = SubResource( 2 )
+
+[node name="sword_sweep" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="sword_sweep"]
+polygon = PoolVector2Array( 32, -20, 69, -43, 80, -7, 80, 7, 69, 43, 32, 20, 38, 11, 38, -11 )
+
+[node name="sword_sprite" type="Polygon2D" parent="sword_sweep"]
+visible = false
+color = Color( 0.054902, 0.207843, 0.45098, 1 )
+polygon = PoolVector2Array( 32, -20, 69, -43, 80, -7, 80, 7, 69, 43, 32, 20, 38, 11, 38, -11 )

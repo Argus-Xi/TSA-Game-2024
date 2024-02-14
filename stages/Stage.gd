@@ -12,8 +12,11 @@ export var next_dialogue = "Starting New Stage"
 # this is a node in the level to detect the player to switch the stage, not a godot signal
 onready var stage_switch_signal = $Stage_switch_signal
 
+onready var player = $Player
+
 func _ready():
 	stage_switch_signal.connect("scene_change", self, "scene_change_2_func")
+	player.connect("player_died_1", self, "died")
 	
 
 func _process(_delta):
