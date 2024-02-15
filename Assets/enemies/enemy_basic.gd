@@ -24,10 +24,12 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func apply_damage(damage: float):
-	local_health = clamp(local_health - damage, 0, total_lives)
-	if local_health == 0:
+func apply_damage(local_damage: float):
+	local_damage=damage
+	local_health = clamp(local_health - local_damage, 0, total_lives)
+	if local_health <= 0:
 		queue_free()
+
 
 func _on_arrow_hit_box_area_entered(area):
 	if area.is_in_group("combat"):
@@ -41,3 +43,4 @@ func shoot():
 	
 	yield(get_tree().create_timer(1),"timeout")
 	shoot()
+
