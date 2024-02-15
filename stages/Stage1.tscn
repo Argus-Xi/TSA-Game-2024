@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://stages/Stage.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/logic/Stage_switch_signal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/enemies/enemy_basic.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/camera/camera_follow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/NPCs/npc_basic.tscn" type="PackedScene" id=6]
 
 [node name="stageroot" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,3 +26,9 @@ text = "1"
 
 [node name="enemy_basic" parent="." instance=ExtResource( 4 )]
 position = Vector2( 345, 373 )
+
+[node name="Camera_node" parent="." instance=ExtResource( 5 )]
+player_nodepath = NodePath("../Player")
+
+[node name="npc" parent="." instance=ExtResource( 6 )]
+position = Vector2( 459, 162 )

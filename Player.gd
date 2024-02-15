@@ -78,12 +78,13 @@ func _process(_delta):
 	if velocity != Vector2.ZERO:
 		pass
 	look_at(get_global_mouse_position())
+	print(Engine.get_frames_per_second())
 	
 	
 	
 	#rotation = direction.angle() # There's a problem: if you don't let go of two diagonals at the exact same time, it faces in the direction of the most recent diagonal released, which makes sense but is frustrating that it can't leave the player at diagonals. How to solve?
 func _physics_process(delta):
-	move_and_slide(velocity.normalized() * speed * delta)
+	move_and_slide(velocity.normalized() * speed * delta * Global.time) # if Global.time is set to 0, the player can't move. normalizes the vector, times the speed variable, times the time since the last frame
 	
 	
 	# arrow shot
@@ -104,23 +105,18 @@ func shoot():
 	
 func swing():
 	sword_sprite.visible = true
-	print(sword_sweep.get_overlapping_bodies())
 	for body in sword_sweep.get_overlapping_bodies():
-		print(body.is_in_group("Enemy"))
 		if body.is_in_group("Enemy"):
 			body.apply_damage(damage)
-			print("enemy hit from player")
 	yield(get_tree().create_timer(0.3),"timeout")
 	sword_sprite.visible = false
 		
 func apply_damage(damage: float):
 	if damage_cooldown == true:
-		print("player hurt")
 		damage_cooldown = false
 		local_health = clamp(local_health - damage, 0, total_lives)
 		Global.player_health = local_health
 		if local_health == 0.0:
-			print("player died")
 			death()
 			
 		# period of time when player is damaged but can't receive more damage - "immunity" phase

@@ -4,19 +4,19 @@ onready var StageContainer = $StageContainer  # child that contains the levels b
 
 onready var current_Stage = $StageContainer/stageroot  # Initiates current_level variable with the Title Screen
 
-onready var menu_screen = $Menu  # menu screen UI reference
+onready var menu_screen = $GUI/Menu  # menu screen UI reference
 
-onready var die_screen = $Die_screen
+onready var die_screen = $GUI/Die_screen
 
 #Cutscene elements
 
-onready var cutscene_dialogue = $Cutscene_Dialogue
+onready var cutscene_dialogue = $GUI/Cutscene_Dialogue
 
-onready var cutscene_title = $Cutscene_Dialogue/Title
+onready var cutscene_title = $GUI/Cutscene_Dialogue/Title
 
-onready var cutscene_content = $Cutscene_Dialogue/Content
+onready var cutscene_content = $GUI/Cutscene_Dialogue/Content
 
-onready var cutscene_timer = $Cutscene_Dialogue/Timer
+onready var cutscene_timer = $GUI/Cutscene_Dialogue/Timer
 
 
 var scene_change_dialogues = [
