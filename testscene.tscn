@@ -1,24 +1,27 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/scripts/camera_follow.gd" type="Script" id=2]
+[ext_resource path="res://Assets/camera/camera_follow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/tilemaps/testmap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/enemies/enemy_basic.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/NPCs/npc_basic.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/NPCs/dialogue_box.tscn" type="PackedScene" id=6]
 
 [node name="testscene" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource( 3 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 140, 345 )
-
-[node name="Camera_node" type="Node2D" parent="."]
-script = ExtResource( 2 )
-player_nodepath = NodePath("../Player")
-
-[node name="Camera2D" type="Camera2D" parent="Camera_node"]
-anchor_mode = 0
-current = true
+position = Vector2( 240, 457 )
 
 [node name="enemy_basic" parent="." instance=ExtResource( 4 )]
 position = Vector2( 440, 138 )
+attack_dist = 200
+
+[node name="npc" parent="." instance=ExtResource( 5 )]
+position = Vector2( 127, 132 )
+
+[node name="Dialogue_box" parent="." instance=ExtResource( 6 )]
+
+[node name="Camera_node" parent="." instance=ExtResource( 2 )]
+player_nodepath = NodePath("../Player")

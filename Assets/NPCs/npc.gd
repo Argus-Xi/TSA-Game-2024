@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 
-var character_name = "npc"
+export var character_name = "npc"
 
-var dialogue_script = [
+export var dialogue_script = [
 	"First sentence.",
 	"Second sentence.",
 	"Third sentence",
@@ -23,7 +23,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		if !is_speaking:
 			for body in talkbox.get_overlapping_bodies():
@@ -35,12 +35,9 @@ func _process(delta):
 
 
 # when the npc speaks; is_speaking is set to true as a state, and the npc broadcasts messages to the dialogue box, waiting for the player to interact to move on
-# SETS Global.time TO ZERO (until dialogue has stopped)
 func speak():
 	is_speaking = true
-	Global.time = 0
 	for sentence in dialogue_script:
 		get_tree().call_group("dialogue", "type", character_name, sentence)
 		yield(self, "increment_dialogue")
 	is_speaking = false
-	Global.time = 1

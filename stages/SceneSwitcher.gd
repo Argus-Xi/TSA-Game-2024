@@ -16,8 +16,6 @@ onready var cutscene_title = $GUI/Cutscene_Dialogue/Title
 
 onready var cutscene_content = $GUI/Cutscene_Dialogue/Content
 
-onready var cutscene_timer = $GUI/Cutscene_Dialogue/Timer
-
 
 var scene_change_dialogues = [
 	{
@@ -62,6 +60,13 @@ func _ready() -> void:
 func _process(_delta):
 	if Input.is_action_just_pressed("escape"):
 		menu_screen.visible = !menu_screen.visible
+		if menu_screen.visible:
+			Global.time = 0
+		elif !menu_screen.visible:
+			Global.time = 1
+	if Input.is_action_just_pressed("interact"):
+		cutscene_dialogue.visible = false
+		Global.time = 1
 
 # handles the second incoming signal from the stage in the chain, changes current stage
 func handle_next_level(save, destination_stage_count):#new_stage_count, next_dialogue):
@@ -82,7 +87,7 @@ func handle_next_level(save, destination_stage_count):#new_stage_count, next_dia
 		cutscene_title.text = scene_change_dialogues[stage_count - 1]["title"]
 		cutscene_content.text = scene_change_dialogues[stage_count - 1]["content"]
 		cutscene_dialogue.visible = true
-		cutscene_timer.start(3)
+		Global.time = 0
 		
 		
 	if stage_count > Global.max_stages:  # checks whether or not it's the last level, cycles back to title screen if it is, comes AFTER cutscene for final cutscene
@@ -103,13 +108,7 @@ func handle_next_level(save, destination_stage_count):#new_stage_count, next_dia
 	
 #  Handles when one of the players die, signal from the level, asks to retry
 func handle_player_death():
-	die_screen.visible = true
-
-# Pulls up menu screen
-func _on_MenuButton_pressed():
-	menu_screen.visible = not menu_screen.visible
-	
-	
+	die_screen.visible = true	
 
 
 func _on_BacktoMain_button_down():
@@ -117,10 +116,7 @@ func _on_BacktoMain_button_down():
 	menu_screen.visible = false
 
 
-# times out when the cutscene is done playing - may be temporary
-func _on_Timer_timeout():
-	cutscene_dialogue.visible = false
-	
+
 # Retrying after dying
 func _on_Retry_button_down():
 	Global.player_health = Global.player_total_lives

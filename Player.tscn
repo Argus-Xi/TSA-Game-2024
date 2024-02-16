@@ -9,9 +9,8 @@ radius = 24.0
 [sub_resource type="CircleShape2D" id=2]
 radius = 35.0571
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 1 )
-speed = 20
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.126618, 0.0683933 )

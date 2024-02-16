@@ -24,7 +24,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	position.x = floor(player_pos.position.x / viewport_size.x) * viewport_size.x
 	position.y = floor(player_pos.position.y / viewport_size.y) * viewport_size.y
 #	pass
