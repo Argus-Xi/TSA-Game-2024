@@ -45,7 +45,7 @@ _global_script_class_icons={
 [application]
 
 config/name="TSA_Game_2024_3.5"
-run/main_scene="res://testscene.tscn"
+run/main_scene="res://stages/SceneSwitcher.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -70,6 +70,7 @@ enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg" )
 
 collison=false
 collision=false
+textures=false
 
 [gui]
 

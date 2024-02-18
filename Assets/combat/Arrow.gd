@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed=600
+export var speed=400
 
 var damage = 1
 # Declare member variables here. Examples:
@@ -26,4 +26,9 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Arrow_body_entered(_body):
 	queue_free()
+	
+func apply_damage(local_damage):
+	rotation += PI
 
+func apply_force(pos, intensity):
+	pass

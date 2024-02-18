@@ -14,6 +14,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	empty_hearts.rect_size.x = heart_size * Global.player_total_lives
-	live_hearts.rect_size.x = heart_size * Global.player_health
+func _process(_delta):
+	visible = Global.hearts_visible
+	empty_hearts.rect_size.x = heart_size * Global.player_total_lives / 2 # division allows for half-hearts
+	live_hearts.rect_size.x = heart_size * Global.player_health / 2

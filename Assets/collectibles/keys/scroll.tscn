@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/collectibles/keys/key.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 8 )
+
+[node name="Scroll" type="Area2D"]
+script = ExtResource( 1 )
+title = "Scroll of Destiny"
+content = "You recovered the scroll of destiny! With the powers hidden within it, you will be able to banish the monsters from this kingdom with a snap of your fingers! But wait it’s…empty? The scroll was supposed to contain the knowledge to defeat the monster army! You are the kingdom’s last hope now…"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -16.0
+margin_top = 16.0
+margin_right = 32.0
+margin_bottom = 24.0
+rect_rotation = -42.912
+color = Color( 0.94902, 0.87451, 0.533333, 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_Key_body_entered"]

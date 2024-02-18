@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Assets/combat/Arrow.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 8 )
+extents = Vector2( 20.1335, 8 )
 
 [node name="Arrow" type="Area2D" groups=["Enemy", "combat"]]
 collision_layer = 2
@@ -15,15 +14,32 @@ script = ExtResource( 1 )
 modulate = Color( 0, 0, 0, 1 )
 rotation = 1.5708
 scale = Vector2( 0.157, 0.502 )
-texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4.088, 0 )
 scale = Vector2( 0.989, 0.62 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( -2.38419e-07, 0 )
 scale = Vector2( 0.2, 0.517 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = -8.0
+margin_right = 24.0
+margin_bottom = 8.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -10.0
+margin_top = -4.0
+margin_right = 14.0
+margin_bottom = 4.0
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = -26.0
+margin_top = -2.0
+margin_right = -2.0
+margin_bottom = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_Arrow_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

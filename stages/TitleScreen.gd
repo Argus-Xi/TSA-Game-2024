@@ -10,7 +10,7 @@ export var local_stage_count = 0
 export var next_dialogue = "Starting New Stage"
 
 # this is a node in the level to detect the player to switch the stage, not a godot signal
-onready var stage_switch_signal = $Stage_switch_signal
+# onready var stage_switch_signal = $Stage_switch_signal
 
 func _ready():
 	pass
@@ -41,4 +41,5 @@ func _on_ContinueGame_button_down():
 
 
 func _on_NewGame_button_down():
+	Global.new_game()
 	scene_change_2_func()

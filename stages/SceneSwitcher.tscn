@@ -102,6 +102,15 @@ theme = SubResource( 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Back to Main"
 
+[node name="SavePos" type="Button" parent="GUI/Menu/panel"]
+margin_left = 216.0
+margin_top = 152.0
+margin_right = 424.0
+margin_bottom = 208.0
+theme = SubResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Save"
+
 [node name="Cutscene_Dialogue" type="ColorRect" parent="GUI"]
 visible = false
 margin_right = 1024.0
@@ -147,4 +156,5 @@ one_shot = true
 [connection signal="button_down" from="GUI/Die_screen/panel/BacktoMain" to="." method="_on_BacktoMain_button_down"]
 [connection signal="button_down" from="GUI/Die_screen/panel/Retry" to="." method="_on_Retry_button_down"]
 [connection signal="button_down" from="GUI/Menu/panel/BacktoMain" to="." method="_on_BacktoMain_button_down"]
+[connection signal="button_down" from="GUI/Menu/panel/SavePos" to="." method="_on_SavePos_button_down"]
 [connection signal="timeout" from="GUI/Cutscene_Dialogue/Timer" to="." method="_on_Timer_timeout"]

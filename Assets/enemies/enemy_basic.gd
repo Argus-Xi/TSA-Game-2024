@@ -1,17 +1,19 @@
 extends KinematicBody2D
 
 
-var local_health = 2
+
 
 export var total_lives = 2
+
+var local_health = 2
 
 export var damage = 1
 
 export var speed = 7
 
-export var rot_speed = 0.5 # for idle
+export var rot_speed = 1 # for idle
 
-export var notice_range = 300
+export var notice_range = 400
 
 export var transition_time = 1.0
 
@@ -36,13 +38,15 @@ var same_screen_as_player = false
 # PHYSICS variables:
 var thrust = 0 # percentage of speed
 var rot_thrust = 0 # percentage of idle rotating speed
-
+var applied_force = Vector2.ZERO
 
 #References
 
 var player_pos = Vector2(0,0)
 
 var arrow= preload("res://Assets/combat/Arrow.tscn")
+
+var heart_reference = preload("res://Assets/collectibles/heart.tscn")
 
 onready var attack_box = $attack_box
 
@@ -83,6 +87,8 @@ func _process(delta):
 		
 func _physics_process(delta):
 	move_and_slide(Vector2.RIGHT.rotated(rotation) * speed * thrust * delta * Global.time)
+	move_and_slide(applied_force * delta * Global.time * 1000)
+	applied_force = applied_force * 0.8
 	rotation += rot_speed * rot_thrust * delta * Global.time
 		
 
@@ -95,23 +101,26 @@ func update_state():
 				state = 1
 				alert_pos.visible = true
 				countdown = transition_time
+				rot_thrust = 0
+				thrust = 0
 			else: # All the things it does while idly waiting: pauses, moves forward, rotates, all randomly
-				var randint = rng.randi_range(0,2)
-				if randint == 0:
+				var randint = rng.randf_range(0,3)
+				if randint <= 0.5:
 					thrust = 0
 					rot_thrust = 0
 					countdown = transition_time
 					print("paused")
-				elif randint == 1:
-					thrust = 0.5
-					rot_thrust = 0
-					countdown = transition_time / 4
-					print("moved")
-				elif randint == 2:
+				elif randint <=2.5:
 					thrust = 0
 					rot_thrust = rng.randi_range(-1, 1)
 					countdown = rng.randf_range(0.5, 2.0)
 					print("rotated")
+				elif randint :
+					thrust = 0.5
+					rot_thrust = 0
+					countdown = transition_time / 4
+					print("moved")
+
 					
 	elif state == 1: # in notice/alert state
 		alert_pos.visible = false
@@ -151,8 +160,19 @@ func update_state():
 
 func apply_damage(local_damage: float):
 	local_health = clamp(local_health - local_damage, 0, total_lives)
+	if state == 0: # enemy notices the player if they're hit
+		state = 1
 	if local_health == 0:
+		var rndm = rng.randf_range(0,2)
+		if rndm <= 1:
+			var heart = heart_reference.instance()
+			heart.position = position
+			get_parent().add_child(heart)
 		queue_free()
+		
+func apply_force(pos: Vector2, intensity):
+	applied_force = Vector2(position.x - pos.x, position.y - pos.y).normalized() * intensity
+	print("force applied to enemy")
 
 func _on_arrow_hit_box_area_entered(area):
 	if area.is_in_group("combat"):
@@ -170,4 +190,5 @@ func swing():
 		if body.is_in_group("player"):
 			print("body is detected as player")
 			body.apply_damage(damage)
+			body.apply_force(position, damage * 20)
 	yield(get_tree().create_timer(transition_time),"timeout")

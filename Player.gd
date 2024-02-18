@@ -22,6 +22,7 @@ export var speed = 20
 var omega = PI
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
+var applied_force = Vector2.ZERO
 
 
 # combat variables
@@ -30,13 +31,14 @@ export var sword_cooldown_timer = 0.5
 export var damage_cooldown_timer = 0.5
 # var b = "text"
 var have_bow= true
-var have_sword = true
+var have_sword = false
 var bow_cooldown = true
 var sword_cooldown = true
 var damage_cooldown = true
 var arrow= preload("res://Assets/combat/Arrow.tscn")
 
-var damage = 1
+var sword_damage = 1
+var bow_damage = 1
 
 # Health
 
@@ -51,6 +53,14 @@ func _ready():
 	#Access saved variables from global simpleton
 	total_lives = Global.player_total_lives
 	local_health = Global.player_health
+	have_bow = Global.has_bow
+	have_sword = Global.has_sword
+	sword_damage = Global.player_sword_damage
+	bow_damage = Global.player_bow_damage
+	
+	#Saved position
+	if Global.save_position_bool:
+		position = Global.save_position_vector
 	
 	arrow_hit_box.connect("area_entered", self, "on_arrow_hit_box_area_entered")
 	sword_sprite.visible = false
@@ -79,6 +89,7 @@ func _process(_delta):
 		pass
 	look_at(get_global_mouse_position())
 	
+	
 
 	
 	
@@ -86,19 +97,17 @@ func _process(_delta):
 	#rotation = direction.angle() # There's a problem: if you don't let go of two diagonals at the exact same time, it faces in the direction of the most recent diagonal released, which makes sense but is frustrating that it can't leave the player at diagonals. How to solve?
 func _physics_process(delta):
 	move_and_slide(velocity.normalized() * speed * delta * Global.time) # if Global.time is set to 0, the player can't move. normalizes the vector, times the speed variable, times the time since the last frame
+	move_and_slide(applied_force * delta * Global.time * 1000)
+	applied_force = applied_force * 0.8
 	
 	
-	# arrow shot
-	
-	
-	
-		
-		
+# arrow shot
 func shoot():
 	bow_cooldown=false
 	var arrow_instance=arrow.instance()
 	arrow_instance.rotation=rotation
 	arrow_instance.global_position=global_position + Vector2(60,0).rotated(rotation) # added to get arrow away from player - no self damage
+	arrow_instance.damage = bow_damage
 	add_child(arrow_instance)
 	
 	yield(get_tree().create_timer(bow_cooldown_timer),"timeout")
@@ -108,7 +117,12 @@ func swing():
 	sword_sprite.visible = true
 	for body in sword_sweep.get_overlapping_bodies():
 		if body.is_in_group("Enemy"):
-			body.apply_damage(damage)
+			body.apply_damage(sword_damage)
+			body.apply_force(position, sword_damage * 20)
+	for area in sword_sweep.get_overlapping_areas(): # so we can hit arrows back
+		if area.is_in_group("Enemy"):
+			area.apply_damage(sword_damage)
+			area.apply_force(position, sword_damage * 20)
 	yield(get_tree().create_timer(0.3),"timeout")
 	sword_sprite.visible = false
 		
@@ -123,7 +137,10 @@ func apply_damage(damage: float):
 		# period of time when player is damaged but can't receive more damage - "immunity" phase
 		yield(get_tree().create_timer(damage_cooldown_timer),"timeout")
 		damage_cooldown = true
-	
+
+func apply_force(pos: Vector2, intensity):
+	applied_force = Vector2(position.x - pos.x, position.y - pos.y).normalized() * intensity
+	print("force applied to player")
 	
 	
 	
@@ -134,8 +151,24 @@ func death():
 func on_arrow_hit_box_area_entered(area):
 	if area.is_in_group("combat"):
 		apply_damage(area.damage)
+		
+func increase_health(inc):
+	local_health = clamp(local_health + inc, 0, total_lives)
+	Global.player_health = local_health
+	
+func increase_total_lives(inc):
+	total_lives += inc
+	Global.player_total_lives = total_lives
+	local_health = total_lives
+	Global.player_health = local_health
 	
 
+# Game saving
+
+func save_position():
+	Global.save_position_bool = true
+	Global.save_position_vector = position
+	
 	
 	
 	
