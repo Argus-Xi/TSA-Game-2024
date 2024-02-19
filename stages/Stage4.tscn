@@ -41,12 +41,12 @@ player_nodepath = NodePath("../Player")
 [node name="Waldo_npc" parent="." instance=ExtResource( 7 )]
 position = Vector2( -3729, -1623 )
 character_name = "Waldo"
-dialogue_script = [ "FREEE BOAT RIDES!", "STEP RIGHT UP AND GET YA BOAT RIDES!!", "(I can't reach the boat)" ]
+dialogue_script = [ "I t-t-tried to build a snowman, but it s-started to attack m-me…", "I ran away and slipped on th-the ice, but now I can’t get up…", "we n-need to get the ice key or the kingdom is d-doomed… " ]
 
 [node name="npc-iship" parent="." instance=ExtResource( 7 )]
 position = Vector2( -1660, -3607 )
 character_name = "Argus"
-dialogue_script = [ "Nice job!", "Now on to the Castle Island!", "Get ready for your biggest test yet." ]
+dialogue_script = [ "I can take you to the castle town from here, but things aren’t looking good. ", "Reports have come in of monsters wearing the soldiers’ armor as protection, so don’t be fooled by their appearance.", "I can take you, but as soon as I drop you off I’m booking it out of there. Good luck, but I don’t know what you’ll need it for." ]
 
 [node name="wet_flint" parent="." instance=ExtResource( 8 )]
 position = Vector2( -2774, -1084 )

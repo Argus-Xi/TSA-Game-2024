@@ -35,22 +35,39 @@ rotation = 1.5708
 player_nodepath = NodePath("../Player")
 
 [node name="heart_increase" parent="." instance=ExtResource( 6 )]
-position = Vector2( 507, -967 )
+position = Vector2( 515, -964 )
 
-[node name="npc" parent="." instance=ExtResource( 7 )]
-position = Vector2( -222, 337 )
-
-[node name="npc2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 676, -857 )
-
-[node name="npc3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 676, -340 )
-
-[node name="npc4" parent="." instance=ExtResource( 7 )]
-position = Vector2( -667, 117 )
-
-[node name="npc5" parent="." instance=ExtResource( 7 )]
+[node name="npc-castle1" parent="." instance=ExtResource( 7 )]
 position = Vector2( 800, 330 )
+character_name = "Josh"
+dialogue_script = [ "Welcome to Castle Town!", "I Hope you had a good boat ride; I usually get a bit seasick.", "We are all so excited that someone is finally after the Scroll!" ]
 
-[node name="npc6" parent="." instance=ExtResource( 7 )]
+[node name="npc-castle2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 213, -172 )
+character_name = "Rosh"
+dialogue_script = [ "Ho wonderful to meet you, hero!", "I would offer you some bread, but i know you only eat fresh Zonos-Fruit.", "We don't have much space to farm here, so we import most of our grains." ]
+
+[node name="npc-castle3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 676, -340 )
+character_name = "Bosh"
+dialogue_script = [ "I love your outfit, hero!", "I'm a tailor, so I pay close attention to people's clothes.", "You should get a new outfit, I think you would look good in this one suit I have." ]
+
+[node name="npc-castle4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 676, -857 )
+character_name = "Gosh"
+dialogue_script = [ "Glad to meet you, hero!", "It has long been said that this is a hero's last chance to get stronger.", "Gosh, I think they might have been talking about you!" ]
+
+[node name="npc-castle5" parent="." instance=ExtResource( 7 )]
+position = Vector2( -222, 337 )
+character_name = "Posh"
+dialogue_script = [ "jolly good to meet you, my good fellow!", "I do hope you succeed on your quest!", "Well I suppose that's cheerio!" ]
+
+[node name="npc-castle7" parent="." instance=ExtResource( 7 )]
+position = Vector2( -643, 141 )
+character_name = "Izzy"
+dialogue_script = [ "Get ready!", "The final challenge awaits you!", "IT IS TIME!!!!!!!" ]
+
+[node name="npc-castle6" parent="." instance=ExtResource( 7 )]
+position = Vector2( -561, 536 )
+character_name = "Losh"
+dialogue_script = [ "WATCH OUT!", "Oh, sorry, I thought I saw a hole in front of you.", "I always watch out for holes, after I tripped in one that is." ]
