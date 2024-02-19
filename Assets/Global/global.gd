@@ -30,7 +30,7 @@ var num_of_keys = 0
 var current_saved_stage = 0
 
 # this count does not include the 0th stage or title screen: if 7 literal scenes, this number will be 6
-var max_stages = 5
+var max_stages = 6
 
 var time = 1
 

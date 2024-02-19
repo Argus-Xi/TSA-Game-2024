@@ -1,28 +1,42 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://stages/Stage.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/logic/Stage_switch_signal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/tilemaps/titlescreen_map.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/camera/camera_follow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/enemies/boss_basic.tscn" type="PackedScene" id=6]
 
 [node name="stageroot" type="Node2D"]
 script = ExtResource( 1 )
 local_stage_count = 1
 next_dialogue = "Starting Stage 2"
 
+[node name="titlescreen_map" parent="." instance=ExtResource( 4 )]
+tile_data = PoolIntArray( 0, 19, 0, 1, 19, 0, 2, 19, 0, 3, 19, 0, 4, 19, 0, 5, 19, 0, 6, 19, 0, 7, 10, 0, 8, 10, 0, 9, 19, 0, 10, 19, 0, 11, 19, 0, 12, 19, 0, 13, 19, 0, 14, 19, 0, 15, 19, 0, 65536, 19, 0, 65537, 10, 0, 65538, 8, 0, 65539, 10, 0, 65540, 10, 0, 65541, 10, 0, 65542, 10, 0, 65543, 10, 0, 65544, 10, 0, 65545, 10, 0, 65546, 10, 0, 65547, 10, 0, 65548, 8, 0, 65549, 10, 0, 65550, 10, 0, 65551, 19, 0, 131072, 19, 0, 131073, 10, 0, 131074, 8, 0, 131075, 10, 0, 131076, 10, 0, 131077, 10, 0, 131078, 10, 0, 131079, 10, 0, 131080, 8, 0, 131081, 10, 0, 131082, 10, 0, 131083, 10, 0, 131084, 10, 0, 131085, 10, 0, 131086, 10, 0, 131087, 19, 0, 196608, 19, 0, 196609, 10, 0, 196610, 10, 0, 196611, 10, 0, 196612, 8, 0, 196613, 8, 0, 196614, 10, 0, 196615, 10, 0, 196616, 10, 0, 196617, 10, 0, 196618, 8, 0, 196619, 10, 0, 196620, 10, 0, 196621, 8, 0, 196622, 10, 0, 196623, 19, 0, 262144, 19, 0, 262145, 10, 0, 262146, 10, 0, 262147, 10, 0, 262148, 10, 0, 262149, 10, 0, 262150, 10, 0, 262151, 10, 0, 262152, 10, 0, 262153, 10, 0, 262154, 10, 0, 262155, 8, 0, 262156, 10, 0, 262157, 10, 0, 262158, 10, 0, 262159, 19, 0, 327680, 19, 0, 327681, 10, 0, 327682, 8, 0, 327683, 10, 0, 327684, 10, 0, 327685, 10, 0, 327686, 10, 0, 327687, 10, 0, 327688, 10, 0, 327689, 10, 0, 327690, 10, 0, 327691, 8, 0, 327692, 10, 0, 327693, 10, 0, 327694, 10, 0, 327695, 19, 0, 393216, 19, 0, 393217, 10, 0, 393218, 8, 0, 393219, 10, 0, 393220, 10, 0, 393221, 10, 0, 393222, 8, 0, 393223, 10, 0, 393224, 10, 0, 393225, 10, 0, 393226, 10, 0, 393227, 10, 0, 393228, 10, 0, 393229, 10, 0, 393230, 10, 0, 393231, 19, 0, 458752, 19, 0, 458753, 10, 0, 458754, 10, 0, 458755, 10, 0, 458756, 10, 0, 458757, 8, 0, 458758, 10, 0, 458759, 10, 0, 458760, 10, 0, 458761, 10, 0, 458762, 10, 0, 458763, 8, 0, 458764, 8, 0, 458765, 10, 0, 458766, 10, 0, 458767, 19, 0, 524288, 19, 0, 524289, 10, 0, 524290, 10, 0, 524291, 10, 0, 524292, 10, 0, 524293, 10, 0, 524294, 10, 0, 524295, 10, 0, 524296, 10, 0, 524297, 10, 0, 524298, 10, 0, 524299, 10, 0, 524300, 10, 0, 524301, 10, 0, 524302, 10, 0, 524303, 19, 0, 589824, 19, 0, 589825, 19, 0, 589826, 19, 0, 589827, 19, 0, 589828, 19, 0, 589829, 19, 0, 589830, 19, 0, 589831, 19, 0, 589832, 19, 0, 589833, 19, 0, 589834, 19, 0, 589835, 19, 0, 589836, 19, 0, 589837, 19, 0, 589838, 19, 0, 589839, 19, 0 )
+
 [node name="Environment" type="Node" parent="."]
 
 [node name="Collectibles" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 139, 195 )
+position = Vector2( 523, 545 )
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="NPCs" type="Node" parent="."]
 
 [node name="Stage_switch_signal" parent="." instance=ExtResource( 3 )]
-position = Vector2( 962, 321 )
+position = Vector2( 512, 25 )
+rotation = 1.5708
 
 [node name="Camera_node" parent="." instance=ExtResource( 5 )]
 player_nodepath = NodePath("../Player")
+
+[node name="boss_root" parent="." instance=ExtResource( 6 )]
+position = Vector2( 514, 110 )
+rotation = 1.5708
+start_dialogue = "YOU WILL NOT FREE MATHONIA!"
+end_dialogue = "You freed Mathonia!"
+total_lives = 100
+damage = 6
