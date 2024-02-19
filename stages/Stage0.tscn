@@ -44,5 +44,17 @@ theme = SubResource( 2 )
 custom_fonts/font = ExtResource( 3 )
 text = "New Game"
 
+[node name="Instructions" type="Label" parent="."]
+margin_left = -14.0
+margin_top = 282.0
+margin_right = 402.0
+margin_bottom = 405.0
+theme = SubResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Press [Esc] to open the menu
+Use [wasd] to move
+Press [E] to interact"
+align = 1
+
 [connection signal="button_down" from="ContinueGame" to="." method="_on_ContinueGame_button_down"]
 [connection signal="button_down" from="NewGame" to="." method="_on_NewGame_button_down"]
