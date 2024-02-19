@@ -131,9 +131,9 @@ func update_state():
 	elif state == 2: # approach state
 		if position.distance_to(player_pos) <= attack_dist: # within range, move to state 3
 			look_at(player_pos)
-			thrust = 0
+			thrust = -0.2 # slightly moves back 
 			state = 3
-			countdown = transition_time
+			countdown = transition_time / 2 # time pauses until attack
 		else: # out of range, keep moving forward
 			look_at(player_pos)
 			thrust = 1

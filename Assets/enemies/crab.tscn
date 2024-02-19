@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Assets/images/goblin.png" type="Texture" id=1]
+[ext_resource path="res://Assets/images/crab.png" type="Texture" id=1]
 [ext_resource path="res://Assets/enemies/enemy_basic.gd" type="Script" id=2]
 [ext_resource path="res://Assets/fonts/small_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/scripts/counter_rotation.gd" type="Script" id=4]
@@ -12,11 +12,15 @@ radius = 22.0
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 4 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
-"name": "goblin",
+"name": "crab",
 "speed": 5.0
 } ]
 
@@ -32,12 +36,13 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="AnimatedSprite" parent="." groups=["Enemy"]]
-position = Vector2( 1.48773e-06, 1.07288e-06 )
-rotation = -1.5708
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 1.5708
 scale = Vector2( 3, 3 )
-frames = SubResource( 5 )
-animation = "goblin"
+frames = SubResource( 6 )
+animation = "crab"
+frame = 1
+playing = true
 
 [node name="arrow_hit_box" type="Area2D" parent="."]
 
