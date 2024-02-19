@@ -23,28 +23,24 @@ var scene_change_dialogues = [
 		"content": "The kingdom of Mathonia has fallen into disarray in recent months; monster invasions have become more frequent, villages are being raided, and the castle has gone silent. Although the royal family were ill-equipped to fight off the monsters, ancient legend hints at the existence of the Scroll Of Destiny: an invaluable piece of knowledge that gives any fighter the ability to banish evil from the land. In an attempt to save the kingdom, you, a mere farmer, go on a journey to save Mathonia…"
 	},
 	{
-		"title": "The Boss Chamber",
-		"content": "Say your prayers"
+		"title": "Beach Island",
+		"content": "Racked by constant waves, the Beach Island has become home to the strongest of sea creatures."
 	},
 	{
 		"title": "Rocky Island",
-		"content": "With the scroll of destiny found to be empty, you returned to your home village, unsure of what else you could do. As you stood at the gate, listening to the sounds of monsters roaring at terrified civilians, you realized the truth of the scroll of destiny and chuckled, wondering how you could have been such a fool. The scroll of destiny was not what mattered: your courage to stand up for the kingdom was, in itself, a mystical power that would prove to banish all evil from the land of Mathonia."
+		"content": "Once an active volcano, these rocky mounds have cooled down and are now inhabited by evil creatures."
 	},
 	{
 		"title": "Ice Island",
-		"content": "Home of the Rocks"
+		"content": "Frozen beyond relief, the Ice Island is inhospitable to all but the most extreme monsters."
 	},
 	{
-		"title": "Rocky Island",
-		"content": "Home of the Rocks"
+		"title": "Castle Town",
+		"content": "Home sweet home isn't so sweet anymore. The monsters have taken over the last villages and the island is now desolate."
 	},
 	{
-		"title": "Forest Island",
-		"content": "Home Sweet home: but desolated"
-	},
-	{
-		"title": "The Castle",
-		"content": "Say your prayers"
+		"title": "Deception",
+		"content": "With the scroll of destiny found to be empty, you returned to your home village, unsure of what else you could do. As you stood at the gate, listening to the sounds of monsters roaring at terrified civilians, you realized the truth of the scroll of destiny and chuckled, wondering how you could have been such a fool. The scroll of destiny was not what mattered: your courage to stand up for the kingdom was, in itself, a mystical power that would prove to banish all evil from the land of Mathonia."
 	},
 ]
 
