@@ -39,6 +39,10 @@ var scene_change_dialogues = [
 		"content": "Home sweet home isn't so sweet anymore. The monsters have taken over the last villages and the island is now desolate."
 	},
 	{
+		"title": "Jerry",
+		"content": "Say your prayers: you are the kingdom's last hope to stop the king of evil."
+	},	
+	{
 		"title": "Deception",
 		"content": "With the scroll of destiny found to be empty, you returned to your home village, unsure of what else you could do. As you stood at the gate, listening to the sounds of monsters roaring at terrified civilians, you realized the truth of the scroll of destiny and chuckled, wondering how you could have been such a fool. The scroll of destiny was not what mattered: your courage to stand up for the kingdom was, in itself, a mystical power that would prove to banish all evil from the land of Mathonia."
 	},

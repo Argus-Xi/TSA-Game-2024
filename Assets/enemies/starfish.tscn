@@ -38,7 +38,7 @@ extents = Vector2( 22.75, 20 )
 script = ExtResource( 2 )
 total_lives = 3
 speed = 4
-attack_dist = 250
+attack_dist = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource( 1 )

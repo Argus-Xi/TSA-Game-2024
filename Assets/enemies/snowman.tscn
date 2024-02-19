@@ -31,7 +31,7 @@ script = ExtResource( 2 )
 total_lives = 4
 rot_speed = 3
 transition_time = 0.8
-attack_dist = 250
+attack_dist = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 shape = SubResource( 1 )

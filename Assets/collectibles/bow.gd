@@ -3,7 +3,7 @@ extends Area2D
 
 var title = "Bow"
 
-var content = "You found the bow! Notch an arrow, pull back the string, and then…What?? What do you mean you don’t know how to do that?? You’ve gotten this far already, surely you should be able to figure this out…"
+var content = "You found the bow! Notch an arrow, pull back the string, and then…What?? What do you mean you don’t know how to do that?? You’ve gotten this far already, surely you should be able to figure this out. Maybe right click?"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -60,7 +60,12 @@ func new_game():
 	player_sword_damage = 1
 	player_bow_damage = 1
 	first_total_lives_increase = true
+	first_wetflint = false
 	first_wetstone = true
 	has_sword = false
 	has_bow = false
+	num_of_keys = 0
+	save_position_bool = false
+	save_position_vector = Vector2.ZERO
+	
 	

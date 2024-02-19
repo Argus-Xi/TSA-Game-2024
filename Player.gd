@@ -27,7 +27,7 @@ var applied_force = Vector2.ZERO
 
 # combat variables
 export var bow_cooldown_timer= 1
-export var sword_cooldown_timer = 5
+export var sword_cooldown_timer = 0.5
 export var damage_cooldown_timer = 0.5
 # var b = "text"
 var have_bow= true
@@ -114,6 +114,7 @@ func shoot():
 	bow_cooldown=true
 	
 func swing():
+	sword_cooldown = false
 	sword_sprite.visible = true
 	for body in sword_sweep.get_overlapping_bodies():
 		if body.is_in_group("Enemy"):
@@ -123,8 +124,9 @@ func swing():
 		if area.is_in_group("Enemy"):
 			area.apply_damage(sword_damage)
 			area.apply_force(position, sword_damage * 20)
-	yield(get_tree().create_timer(0.3),"timeout")
+	yield(get_tree().create_timer(sword_cooldown_timer),"timeout")
 	sword_sprite.visible = false
+	sword_cooldown = true
 		
 func apply_damage(damage: float):
 	if damage_cooldown == true:

@@ -38,7 +38,8 @@ start_dialogue = "Jerry has noticed you!"
 end_dialogue = "You beat Jerry!"
 total_lives = 100
 damage = 6
-transition_time = 0.7
+notice_range = 350
+transition_time = 0.75
 key_reference = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
@@ -57,7 +58,6 @@ rotation = 1.5708
 scale = Vector2( 3, 3 )
 frames = SubResource( 7 )
 animation = "jerry"
-frame = 1
 playing = true
 
 [node name="arrow_hit_box" type="Area2D" parent="."]

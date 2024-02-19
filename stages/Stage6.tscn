@@ -5,11 +5,12 @@
 [ext_resource path="res://Assets/logic/Stage_switch_signal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/tilemaps/titlescreen_map.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/camera/camera_follow.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/enemies/boss_basic.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/enemies/jerry.tscn" type="PackedScene" id=6]
 
 [node name="stageroot" type="Node2D"]
 script = ExtResource( 1 )
 local_stage_count = 6
+required_num_of_keys = 4
 next_dialogue = "Starting Stage 2"
 
 [node name="titlescreen_map" parent="." instance=ExtResource( 4 )]
@@ -24,6 +25,10 @@ position = Vector2( 523, 545 )
 
 [node name="Enemies" type="Node" parent="."]
 
+[node name="boss_root" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 514, 114 )
+rotation = 1.56861
+
 [node name="NPCs" type="Node" parent="."]
 
 [node name="Stage_switch_signal" parent="." instance=ExtResource( 3 )]
@@ -32,11 +37,3 @@ rotation = 1.5708
 
 [node name="Camera_node" parent="." instance=ExtResource( 5 )]
 player_nodepath = NodePath("../Player")
-
-[node name="boss_root" parent="." instance=ExtResource( 6 )]
-position = Vector2( 514, 110 )
-rotation = 1.5708
-start_dialogue = "YOU WILL NOT FREE MATHONIA!"
-end_dialogue = "You freed Mathonia!"
-total_lives = 100
-damage = 6

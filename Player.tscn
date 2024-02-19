@@ -12,7 +12,7 @@ radius = 35.0571
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 1 )
-sword_cooldown_timer = 1.0
+sword_cooldown_timer = 0.2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.222, 1.218 )
@@ -26,7 +26,7 @@ shape = SubResource( 2 )
 [node name="sword_sweep" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="sword_sweep"]
-polygon = PoolVector2Array( 32, -20, 69, -43, 80, -7, 80, 7, 69, 43, 32, 20, 38, 11, 38, -11 )
+polygon = PoolVector2Array( 32, -20, 80, -48, 96, -8, 96, 8, 80, 48, 32, 20, 38, 11, 38, -11 )
 
 [node name="sword_sprite" type="Sprite" parent="sword_sweep"]
 position = Vector2( 60, 2.02656e-06 )
@@ -35,7 +35,6 @@ scale = Vector2( 2.345, 2.086 )
 texture = ExtResource( 3 )
 
 [node name="Polygon2D" type="Polygon2D" parent="sword_sweep/sword_sprite"]
-scale = Vector2( 1, 1 )
 color = Color( 0.247059, 0.247059, 0.247059, 0.427451 )
 polygon = PoolVector2Array( -4.90786, 12.8413, -6.91863, 5.60647, -9.41226, 1.71764, -14.2308, -0.87813, -10.2397, -20.068, -7.35984, -18.856, -0.256653, -15.1568, 5.71217, -9.94739, 9.70197, -3.72526, 12.308, 3.61816, 14.2626, 9.12573, 14.5278, 13.6384 )
 

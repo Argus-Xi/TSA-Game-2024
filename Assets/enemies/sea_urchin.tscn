@@ -44,6 +44,7 @@ rotation = -1.5708
 scale = Vector2( 3, 3 )
 frames = SubResource( 6 )
 animation = "sea_urchin"
+frame = 1
 playing = true
 
 [node name="arrow_hit_box" type="Area2D" parent="."]

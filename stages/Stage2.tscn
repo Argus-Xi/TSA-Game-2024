@@ -1,20 +1,22 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://stages/Stage.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/logic/Stage_switch_signal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/tilemaps/titlescreen_map.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/camera/camera_follow.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/enemies/boss_basic.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/enemies/sea_urchin.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/NPCs/npc_basic.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Assets/collectibles/keys/scroll.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/enemies/crab.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/collectibles/heart_increase.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/collectibles/keys/blue_key.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/enemies/starfish.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/tilemaps/breakable_wall.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/enemies/hermit_crab_boss.tscn" type="PackedScene" id=12]
 
 [node name="stageroot" type="Node2D"]
 script = ExtResource( 1 )
 local_stage_count = 2
+required_num_of_keys = 1
 next_dialogue = "Starting Stage 2"
 
 [node name="TileMap" parent="." instance=ExtResource( 4 )]
@@ -36,12 +38,162 @@ rotation = 3.14159
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="boss_root" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( -1335, 171 )
-rotation = 2.00806
-time_between_states = 10
-item_drop = ExtResource( 8 )
-key_reference = ExtResource( 10 )
+[node name="enemy_root" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 848, -872 )
+
+[node name="enemy_root2" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 104, -168 )
+
+[node name="enemy_root3" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 336, -512 )
+
+[node name="enemy_root4" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 232, -1168 )
+
+[node name="enemy_root5" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -376, -792 )
+
+[node name="enemy_root6" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -520, -1808 )
+
+[node name="enemy_root7" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -752, -1760 )
+
+[node name="enemy_root8" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -1408, -1496 )
+
+[node name="enemy_root9" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -2576, -1800 )
+
+[node name="enemy_root10" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -1872, -1496 )
+
+[node name="enemy_root11" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -3480, -1808 )
+
+[node name="enemy_root12" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -3328, -1480 )
+
+[node name="enemy_root13" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -3376, -992 )
+
+[node name="enemy_root14" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -3936, -1512 )
+
+[node name="enemy_root15" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -3968, -1024 )
+
+[node name="enemy_root16" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -4568, -536 )
+
+[node name="enemy_root17" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -4400, 192 )
+
+[node name="enemy_root18" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -3568, -328 )
+
+[node name="enemy_root19" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -4296, 408 )
+
+[node name="enemy_root20" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -3608, 152 )
+
+[node name="enemy_root21" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -3312, 1080 )
+
+[node name="enemy_root22" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( -2936, 184 )
+
+[node name="enemy_root23" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 136, -1120 )
+
+[node name="enemy_root24" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -808, -1040 )
+
+[node name="enemy_root25" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -1504, -1736 )
+
+[node name="enemy_root26" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -2728, -2328 )
+
+[node name="enemy_root27" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -2848, -1744 )
+
+[node name="enemy_root28" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -3352, -1736 )
+
+[node name="enemy_root29" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -3592, -1312 )
+
+[node name="enemy_root30" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -3624, -576 )
+
+[node name="enemy_root31" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -4448, -408 )
+
+[node name="enemy_root32" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -3688, -792 )
+
+[node name="enemy_root33" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -4640, 152 )
+
+[node name="enemy_root34" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -3504, 432 )
+
+[node name="enemy_root35" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -3552, 536 )
+
+[node name="enemy_root36" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -2840, 520 )
+
+[node name="enemy_root37" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -2440, 800 )
+
+[node name="enemy_root38" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -2208, 312 )
+
+[node name="enemy_root39" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( -3784, -160 )
+
+[node name="enemy_root40" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 96, -944 )
+
+[node name="enemy_root41" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -432, -904 )
+
+[node name="enemy_root42" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -1064, -1624 )
+
+[node name="enemy_root43" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -1656, -1640 )
+
+[node name="enemy_root44" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -2456, -1568 )
+
+[node name="enemy_root45" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -2840, -1504 )
+
+[node name="enemy_root46" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -3672, -1632 )
+
+[node name="enemy_root47" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -4080, -344 )
+
+[node name="enemy_root48" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -4544, 96 )
+
+[node name="enemy_root49" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -2728, 248 )
+
+[node name="enemy_root50" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -2928, 960 )
+
+[node name="enemy_root51" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( -2560, 1024 )
+
+[node name="boss_root" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( -1336, 232 )
+rotation = -3.93024
 
 [node name="NPCs" type="Node" parent="."]
 

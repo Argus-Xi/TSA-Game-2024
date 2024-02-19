@@ -11,6 +11,7 @@
 [node name="stageroot" type="Node2D"]
 script = ExtResource( 1 )
 local_stage_count = 5
+required_num_of_keys = 3
 next_dialogue = "Starting Stage 2"
 
 [node name="titlescreen_map" parent="." instance=ExtResource( 4 )]

@@ -163,7 +163,7 @@ func apply_damage(local_damage: float):
 	if state == 0: # enemy notices the player if they're hit
 		state = 1
 	if local_health == 0:
-		var rndm = rng.randf_range(0,2)
+		var rndm = rng.randf_range(0,8)
 		if rndm <= 1:
 			var heart = heart_reference.instance()
 			heart.position = position
