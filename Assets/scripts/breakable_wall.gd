@@ -12,5 +12,5 @@ func _ready():
 func apply_damage(num):
 	queue_free()
 	
-func apply_force(num):
+func apply_force(pos, num):
 	pass
