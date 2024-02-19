@@ -44,7 +44,7 @@ var applied_force = Vector2.ZERO
 
 var player_pos = Vector2(0,0)
 
-var arrow= preload("res://Assets/combat/Arrow.tscn")
+var arrow= preload("res://Assets/combat/projectile.tscn")
 
 var heart_reference = preload("res://Assets/collectibles/heart.tscn")
 

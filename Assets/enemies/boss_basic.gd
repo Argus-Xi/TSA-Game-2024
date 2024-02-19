@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-var title = "Boss Name"
+export var title = "Boss Name"
 
 var local_health = 20
 

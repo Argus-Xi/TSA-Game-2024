@@ -29,6 +29,8 @@ extents = Vector2( 22.75, 20 )
 [node name="enemy_root" type="KinematicBody2D" groups=["Enemy"]]
 script = ExtResource( 2 )
 total_lives = 4
+rot_speed = 3
+transition_time = 0.8
 attack_dist = 250
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]

@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/enemies/boss_basic.gd" type="Script" id=1]
+[ext_resource path="res://Assets/tilemaps/new_theme.tres" type="Theme" id=2]
+[ext_resource path="res://Assets/fonts/small_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/scripts/counter_rotation.gd" type="Script" id=4]
+[ext_resource path="res://Assets/fonts/Large_Font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Assets/images/mammoth.png" type="Texture" id=6]
+[ext_resource path="res://Assets/collectibles/keys/blue_key.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/collectibles/wet_flint.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 74.6687, 47.9021 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 168.0
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 79.3754, 54.7453 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 38.75, 38 )
+
+[node name="boss_root" type="KinematicBody2D" groups=["Enemy"]]
+scale = Vector2( 1.15905, 1.16905 )
+script = ExtResource( 1 )
+title = "Mammoth"
+start_dialogue = "The Mammoth has noticed you!"
+end_dialogue = "You beat the Mammoth!"
+total_lives = 70
+damage = 4
+transition_time = 1.2
+item_drop = ExtResource( 8 )
+key_reference = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+position = Vector2( -42.6687, 0 )
+shape = SubResource( 4 )
+
+[node name="pushback" type="Area2D" parent="."]
+
+[node name="pushback_collision" type="CollisionShape2D" parent="pushback"]
+position = Vector2( 193.262, -2.84217e-14 )
+scale = Vector2( 1.383, 1 )
+shape = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="." groups=["Enemy"]]
+position = Vector2( 1.48773e-06, 1.07288e-06 )
+rotation = 1.5708
+scale = Vector2( 7, 7 )
+texture = ExtResource( 6 )
+
+[node name="arrow_hit_box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arrow_hit_box"]
+position = Vector2( -44.8643, 1.63154e-06 )
+shape = SubResource( 5 )
+
+[node name="attack_box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_box"]
+position = Vector2( 80, 0 )
+shape = SubResource( 3 )
+
+[node name="alert_pos" type="Position2D" parent="."]
+visible = false
+script = ExtResource( 4 )
+
+[node name="alert" type="Label" parent="alert_pos"]
+margin_left = -6.0
+margin_top = -40.0
+margin_right = 6.0
+margin_bottom = -7.0
+custom_fonts/font = ExtResource( 3 )
+text = "!"
+
+[node name="boss_UI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Title" type="Label" parent="boss_UI"]
+margin_left = 200.0
+margin_top = 552.0
+margin_right = 824.0
+margin_bottom = 612.0
+custom_fonts/font = ExtResource( 5 )
+text = "Title"
+align = 1
+
+[node name="healthbar" type="ProgressBar" parent="boss_UI"]
+margin_left = 16.0
+margin_top = 616.0
+margin_right = 1008.0
+margin_bottom = 632.0
+theme = ExtResource( 2 )
+value = 60.0
+percent_visible = false
+
+[connection signal="body_entered" from="pushback" to="." method="_on_pushback_body_entered"]
+[connection signal="area_entered" from="arrow_hit_box" to="." method="_on_arrow_hit_box_area_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/images/circle.png" type="Texture" id=2]
+[ext_resource path="res://Assets/images/player.png" type="Texture" id=2]
+[ext_resource path="res://Assets/images/sword_sweep.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 24.0
@@ -11,22 +12,11 @@ radius = 35.0571
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.126618, 0.0683933 )
-scale = Vector2( 0.214177, 0.213789 )
-texture = ExtResource( 2 )
+sword_cooldown_timer = 1.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.222, 1.218 )
 shape = SubResource( 1 )
-
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 24.0
-margin_top = -8.0
-margin_right = 32.0
-margin_bottom = 8.0
-color = Color( 0.701961, 0.0392157, 0.0392157, 1 )
 
 [node name="arrow_hit_box" type="Area2D" parent="."]
 
@@ -38,7 +28,25 @@ shape = SubResource( 2 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="sword_sweep"]
 polygon = PoolVector2Array( 32, -20, 69, -43, 80, -7, 80, 7, 69, 43, 32, 20, 38, 11, 38, -11 )
 
-[node name="sword_sprite" type="Polygon2D" parent="sword_sweep"]
-visible = false
-color = Color( 0.054902, 0.207843, 0.45098, 1 )
-polygon = PoolVector2Array( 32, -20, 69, -43, 80, -7, 80, 7, 69, 43, 32, 20, 38, 11, 38, -11 )
+[node name="sword_sprite" type="Sprite" parent="sword_sweep"]
+position = Vector2( 60, 2.02656e-06 )
+rotation = 0.624578
+scale = Vector2( 2.345, 2.086 )
+texture = ExtResource( 3 )
+
+[node name="Polygon2D" type="Polygon2D" parent="sword_sweep/sword_sprite"]
+scale = Vector2( 1, 1 )
+color = Color( 0.247059, 0.247059, 0.247059, 0.427451 )
+polygon = PoolVector2Array( -4.90786, 12.8413, -6.91863, 5.60647, -9.41226, 1.71764, -14.2308, -0.87813, -10.2397, -20.068, -7.35984, -18.856, -0.256653, -15.1568, 5.71217, -9.94739, 9.70197, -3.72526, 12.308, 3.61816, 14.2626, 9.12573, 14.5278, 13.6384 )
+
+[node name="ColorRect" type="ColorRect" parent="sword_sweep/sword_sprite"]
+margin_left = -5.0
+margin_top = 12.0
+margin_right = 17.0
+margin_bottom = 14.0
+color = Color( 0.431373, 0.419608, 0.419608, 1 )
+
+[node name="Sprite" type="Sprite" parent="sword_sweep"]
+rotation = -1.5708
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )

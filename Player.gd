@@ -27,7 +27,7 @@ var applied_force = Vector2.ZERO
 
 # combat variables
 export var bow_cooldown_timer= 1
-export var sword_cooldown_timer = 0.5
+export var sword_cooldown_timer = 5
 export var damage_cooldown_timer = 0.5
 # var b = "text"
 var have_bow= true
