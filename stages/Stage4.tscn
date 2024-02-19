@@ -26,7 +26,7 @@ tile_data = PoolIntArray( -1310768, 37, 0 )
 [node name="Collectibles" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 512, 370 )
+position = Vector2( 391, 439 )
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -46,7 +46,7 @@ dialogue_script = [ "FREEE BOAT RIDES!", "STEP RIGHT UP AND GET YA BOAT RIDES!!"
 [node name="npc-iship" parent="." instance=ExtResource( 7 )]
 position = Vector2( -1660, -3607 )
 character_name = "Argus"
-dialogue_script = [ "Nice job!", "Now on to the Castle Island!", "Get ready for your biggest test yet." ]
+dialogue_script = [ "I can take you to the castle town from here, but things aren’t looking good. Reports have come in of monsters wearing the soldiers’ armor as protection, so don’t be fooled by their appearance.", "I can take you, but as soon as I drop you off I’m booking it out of there. Good luck, but I don’t know what you’ll need it for.", null ]
 
 [node name="wet_flint" parent="." instance=ExtResource( 8 )]
 position = Vector2( -2774, -1084 )
@@ -110,3 +110,9 @@ position = Vector2( -2830, -1084 )
 
 [node name="heart_increase" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2563, -2330 )
+
+[node name="npc" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1818, 166 )
+rotation = 3.14159
+character_name = "Frosty"
+dialogue_script = [ "I t-t-tried to build a snowman, but it s-started to attack m-me…", "I ran away and slipped on th-the ice, but now I can’t get up…", "we n-need to get the ice key or the kingdom is d-doomed… " ]
